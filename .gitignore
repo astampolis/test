@@ -138,3 +138,11 @@ dist
 .env.local
 
 
+.vs/
+bin/
+obj/
+node_modules/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
