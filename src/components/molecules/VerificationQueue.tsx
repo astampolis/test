@@ -1,5 +1,4 @@
 import React from "react";
-import { FiFileText } from "react-icons/fi";
 import { GoChecklist } from "react-icons/go";
 
 interface ContractStatus {

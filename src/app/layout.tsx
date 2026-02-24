@@ -1,12 +1,10 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Sidebar from "../components/organism/sideBar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lumen Logistics - Blockchain Integration",

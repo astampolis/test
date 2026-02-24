@@ -1,5 +1,4 @@
 "use client";
-import { BsDot } from "react-icons/bs";
 import { IoCheckmarkCircleOutline, IoWarningOutline } from "react-icons/io5";
 
 const alerts = [

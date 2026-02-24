@@ -1,81 +1,44 @@
 'use client';
 
-import { Line } from 'react-chartjs-2';
+import React from 'react';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
+  LineChart as RechartsLineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
   Tooltip,
   Legend,
-  ChartOptions,
-} from 'chart.js';
+  ResponsiveContainer,
+} from 'recharts';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+type LineChartProps = React.HTMLAttributes<HTMLDivElement>;
 
-const options: ChartOptions<'line'> = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      position: 'bottom' as const,
-    },
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
-};
-
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Product Authentication',
-      data: [120, 150, 170, 190, 220, 260],
-      borderColor: 'rgb(59, 130, 246)',
-      backgroundColor: 'rgba(59, 130, 246, 0.5)',
-    },
-    {
-      label: 'Inventory Transfer',
-      data: [90, 100, 110, 130, 150, 170],
-      borderColor: 'rgb(34, 197, 94)',
-      backgroundColor: 'rgba(34, 197, 94, 0.5)',
-    },
-    {
-      label: 'Smart Contract',
-      data: [50, 60, 80, 100, 110, 120],
-      borderColor: 'rgb(168, 85, 247)',
-      backgroundColor: 'rgba(168, 85, 247, 0.5)',
-    },
-    {
-      label: 'Payment',
-      data: [40, 45, 50, 55, 58, 60],
-      borderColor: 'rgb(239, 68, 68)',
-      backgroundColor: 'rgba(239, 68, 68, 0.5)',
-    },
-  ],
-};
-
-interface LineChartProps extends React.HTMLAttributes<HTMLDivElement> {}
+const data = [
+  { month: 'Jan', authentication: 120, transfer: 90, contract: 50, payment: 40 },
+  { month: 'Feb', authentication: 150, transfer: 100, contract: 60, payment: 45 },
+  { month: 'Mar', authentication: 170, transfer: 110, contract: 80, payment: 50 },
+  { month: 'Apr', authentication: 190, transfer: 130, contract: 100, payment: 55 },
+  { month: 'May', authentication: 220, transfer: 150, contract: 110, payment: 58 },
+  { month: 'Jun', authentication: 260, transfer: 170, contract: 120, payment: 60 },
+];
 
 export function LineChart({ className, ...props }: LineChartProps) {
   return (
     <div className={className} {...props}>
-      <Line options={options} data={data} />
+      <ResponsiveContainer width="100%" height={260}>
+        <RechartsLineChart data={data}>
+          <CartesianGrid stroke="#e5e7eb" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend verticalAlign="bottom" />
+          <Line type="monotone" dataKey="authentication" name="Product Authentication" stroke="#3b82f6" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="transfer" name="Inventory Transfer" stroke="#22c55e" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="contract" name="Smart Contract" stroke="#a855f7" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="payment" name="Payment" stroke="#ef4444" strokeWidth={2} dot={false} />
+        </RechartsLineChart>
+      </ResponsiveContainer>
     </div>
   );
-} 
+}
