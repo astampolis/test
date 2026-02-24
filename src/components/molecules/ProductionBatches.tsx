@@ -2,7 +2,18 @@
 
 import React from 'react'
 
-const batches = [
+type BatchStatus = 'In Progress' | 'Queued'
+
+interface Batch {
+  id: string
+  title: string
+  progress: number
+  total: number
+  time: string
+  status: BatchStatus
+}
+
+const batches: Batch[] = [
   {
     id: 'PB-2024-001',
     title: 'Premium Electronics',
@@ -29,7 +40,7 @@ const batches = [
   },
 ]
 
-const statusStyle:any = {
+const statusStyle: Record<BatchStatus, string> = {
   'In Progress': 'bg-blue-100 text-blue-600',
   'Queued': 'bg-yellow-100 text-yellow-700',
 }

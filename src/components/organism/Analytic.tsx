@@ -39,15 +39,7 @@ const supplierData = [
   { name: "Delta", Delivery: 91, Quality: 92, Cost: 87 },
 ];
 
-const costBreakdown = [
-  { name: "Transportation", value: 35 },
-  { name: "Warehousing", value: 25 },
-  { name: "Inventory", value: 20 },
-  { name: "Labor", value: 15 },
-  { name: "Other", value: 5 },
-];
 
-const COLORS = ["#3b82f6", "#10b981", "#facc15", "#ef4444", "#a855f7"];
 
 export default function Analytics() {
   return (
